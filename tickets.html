@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的票務</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="profile.html" class="text-gray-600 hover:text-blue-500">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </a>
+            <span class="text-lg font-semibold text-gray-800">我的票務</span>
+            <button class="text-blue-500 text-sm font-medium">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-16 pb-20">
+        <!-- 分類標籤 -->
+        <div class="px-4 py-4 bg-white border-b border-gray-100">
+            <div class="flex items-center space-x-2 overflow-x-auto">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-medium whitespace-nowrap">
+                    全部
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    待使用
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    已使用
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    已過期
+                </button>
+            </div>
+        </div>
+
+        <!-- 票務列表 -->
+        <div class="px-4 mt-4">
+            <div class="space-y-4">
+                <!-- 票務1 - 待使用 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border-l-4 border-blue-500">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">待使用</span>
+                                    <span class="text-xs text-gray-500">訂單號：KL20241215001</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-1">南丫島渡輪票</h3>
+                                <p class="text-sm text-gray-600 mb-2">中環碼頭 ↔ 南丫島索罟灣</p>
+                            </div>
+                            <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-ship text-blue-500 text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="flex flex-col space-y-1">
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-calendar text-blue-500"></i>
+                                    <span>使用日期：2024年12月20日</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-users text-blue-500"></i>
+                                    <span>2張成人票</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-800">$104</div>
+                                <div class="text-xs text-gray-500">已支付</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-3">
+                            <button class="flex-1 bg-blue-500 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-600">
+                                查看詳情
+                            </button>
+                            <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200">
+                                退票
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 票務2 - 待使用 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border-l-4 border-blue-500">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">待使用</span>
+                                    <span class="text-xs text-gray-500">訂單號：KL20241214002</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-1">大館藝術展覽門票</h3>
+                                <p class="text-sm text-gray-600 mb-2">當代藝術特展 - 限時展覽</p>
+                            </div>
+                            <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-palette text-blue-500 text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="flex flex-col space-y-1">
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-calendar text-blue-500"></i>
+                                    <span>使用日期：2024年12月18日</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-users text-blue-500"></i>
+                                    <span>1張成人票</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-800">$80</div>
+                                <div class="text-xs text-gray-500">已支付</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-3">
+                            <button class="flex-1 bg-blue-500 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-600">
+                                查看詳情
+                            </button>
+                            <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200">
+                                退票
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 票務3 - 已使用 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border-l-4 border-gray-300">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full font-medium">已使用</span>
+                                    <span class="text-xs text-gray-500">訂單號：KL20241210003</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-1">長洲渡輪票</h3>
+                                <p class="text-sm text-gray-600 mb-2">中環碼頭 ↔ 長洲</p>
+                            </div>
+                            <div class="w-16 h-16 bg-gray-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-ship text-gray-400 text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="flex flex-col space-y-1">
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-calendar-check text-gray-400"></i>
+                                    <span>已使用：2024年12月12日</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-users text-gray-400"></i>
+                                    <span>2張成人票</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-500">$96</div>
+                                <div class="text-xs text-gray-400">已使用</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-3">
+                            <button class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">
+                                查看詳情
+                            </button>
+                            <button class="px-4 py-2 bg-gray-100 text-gray-500 rounded-lg text-sm font-medium">
+                                評價
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 票務4 - 已使用 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border-l-4 border-gray-300">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full font-medium">已使用</span>
+                                    <span class="text-xs text-gray-500">訂單號：KL20241208004</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-1">元朗屏山文物徑導覽</h3>
+                                <p class="text-sm text-gray-600 mb-2">文化導覽體驗 - 圍村文化探索</p>
+                            </div>
+                            <div class="w-16 h-16 bg-gray-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-map-marked-alt text-gray-400 text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="flex flex-col space-y-1">
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-calendar-check text-gray-400"></i>
+                                    <span>已使用：2024年12月10日</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-xs text-gray-600">
+                                    <i class="fas fa-users text-gray-400"></i>
+                                    <span>1張成人票</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-500">$150</div>
+                                <div class="text-xs text-gray-400">已使用</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-3">
+                            <button class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">
+                                查看詳情
+                            </button>
+                            <button class="px-4 py-2 bg-gray-100 text-gray-500 rounded-lg text-sm font-medium">
+                                評價
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 空狀態提示（當沒有票務時顯示） -->
+        <!-- <div class="px-4 mt-8 text-center py-12">
+            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-ticket-alt text-gray-400 text-3xl"></i>
+            </div>
+            <p class="text-gray-600 font-medium mb-2">暫無票務</p>
+            <p class="text-sm text-gray-500 mb-4">通過Klook預訂的票務將顯示在這裡</p>
+            <button class="bg-blue-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-600">
+                去預訂
+            </button>
+        </div> -->
+    </main>
+</body>
+</html>
+
+
+
+
+
+

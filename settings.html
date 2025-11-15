@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設置</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="profile.html" class="text-gray-600 hover:text-blue-500">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </a>
+            <span class="text-lg font-semibold text-gray-800">設置</span>
+            <div class="w-6"></div>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-16 pb-20">
+        <!-- 通知設置 -->
+        <div class="px-4 mt-4">
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="px-4 py-3 border-b border-gray-100">
+                    <h3 class="text-sm font-semibold text-gray-800">通知設置</h3>
+                </div>
+                <div class="p-4 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-gray-800">推送通知</p>
+                            <p class="text-xs text-gray-500 mt-1">接收計劃更新和建議</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-medium text-gray-800">位置提醒</p>
+                            <p class="text-xs text-gray-500 mt-1">到達地點時提醒</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 隱私設置 -->
+        <div class="px-4 mt-4">
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="px-4 py-3 border-b border-gray-100">
+                    <h3 class="text-sm font-semibold text-gray-800">隱私設置</h3>
+                </div>
+                <div class="divide-y divide-gray-100">
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">位置權限</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs text-green-600">已授權</span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">Facebook連接</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs text-green-600">已連接</span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">數據使用</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 應用設置 -->
+        <div class="px-4 mt-4">
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="px-4 py-3 border-b border-gray-100">
+                    <h3 class="text-sm font-semibold text-gray-800">應用設置</h3>
+                </div>
+                <div class="divide-y divide-gray-100">
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">語言</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">繁體中文</span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">主題</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">淺色</span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">清除緩存</span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs text-gray-500">128 MB</span>
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 關於 -->
+        <div class="px-4 mt-4">
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="divide-y divide-gray-100">
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">幫助與支持</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">隱私政策</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <span class="font-medium text-gray-800">使用條款</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </a>
+                    <div class="p-4">
+                        <p class="text-sm text-gray-500 text-center">版本 1.0.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退出登錄 -->
+        <div class="px-4 mt-6 mb-6">
+            <button class="w-full bg-red-50 text-red-600 py-3 rounded-lg font-medium hover:bg-red-100">
+                退出登錄
+            </button>
+        </div>
+    </main>
+</body>
+</html>
+

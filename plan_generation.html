@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成出行計劃</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+        .map-placeholder {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="text-gray-600 hover:text-blue-500">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </a>
+            <span class="text-lg font-semibold text-gray-800">生成計劃</span>
+            <button class="text-blue-500 text-sm font-medium">完成</button>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-16 pb-24">
+        <!-- 目的地規劃模式 -->
+        <div id="destination-mode">
+            <!-- 固定點設置卡片 -->
+            <div class="px-4 mb-4">
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl shadow-lg p-4 text-white">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-lg font-semibold">目的地規劃</h2>
+                        <button class="text-white hover:text-blue-100">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-blue-100 mb-3">已設定 3 個固定點</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-sm">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>起點：中環</span>
+                            <span class="text-blue-200">14:00</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <i class="fas fa-circle text-xs"></i>
+                            <span>大館</span>
+                            <span class="text-blue-200">15:30</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <i class="fas fa-circle text-xs"></i>
+                            <span>南丫島</span>
+                            <span class="text-blue-200">18:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 多種方案選擇 -->
+            <div class="px-4 mb-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-semibold text-gray-700">為你推薦 3 種方案</h3>
+                    <button class="text-xs text-indigo-600 hover:text-indigo-700">
+                        <i class="fas fa-sync-alt mr-1"></i>重新生成
+                    </button>
+                </div>
+                
+                <!-- 方案1 -->
+                <div class="bg-white rounded-xl shadow-sm p-4 mb-3 border-2 border-indigo-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">方案一</span>
+                            <span class="text-xs text-gray-500">推薦路線</span>
+                        </div>
+                        <div class="flex items-center space-x-1 text-xs text-gray-500">
+                            <i class="fas fa-clock"></i>
+                            <span>4小時</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center space-x-2 text-xs text-gray-600">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                            <span>中環 → 大館 → 南丫島</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-gray-600">
+                            <i class="fas fa-walking"></i>
+                            <span>總距離：3.2公里</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="flex-1 bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:from-indigo-600 hover:to-blue-700">
+                            選擇此方案
+                        </button>
+                        <button class="px-3 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 方案2 -->
+                <div class="bg-white rounded-xl shadow-sm p-4 mb-3 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2 py-1 rounded">方案二</span>
+                            <span class="text-xs text-gray-500">文化路線</span>
+                        </div>
+                        <div class="flex items-center space-x-1 text-xs text-gray-500">
+                            <i class="fas fa-clock"></i>
+                            <span>4.5小時</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center space-x-2 text-xs text-gray-600">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                            <span>中環 → 大館 → 上環古董街 → 南丫島</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-gray-600">
+                            <i class="fas fa-walking"></i>
+                            <span>總距離：4.1公里</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="flex-1 bg-gradient-to-r from-sky-400 to-cyan-500 text-white py-2 rounded-lg text-sm font-medium hover:from-sky-500 hover:to-cyan-600">
+                            選擇此方案
+                        </button>
+                        <button class="px-3 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 方案3 -->
+                <div class="bg-white rounded-xl shadow-sm p-4 mb-3 border border-gray-200">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded">方案三</span>
+                            <span class="text-xs text-gray-500">悠閒路線</span>
+                        </div>
+                        <div class="flex items-center space-x-1 text-xs text-gray-500">
+                            <i class="fas fa-clock"></i>
+                            <span>5小時</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-3">
+                        <div class="flex items-center space-x-2 text-xs text-gray-600">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                            <span>中環 → 大館 → 赤柱 → 南丫島</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-gray-600">
+                            <i class="fas fa-walking"></i>
+                            <span>總距離：5.3公里</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="flex-1 bg-gradient-to-r from-teal-400 to-cyan-500 text-white py-2 rounded-lg text-sm font-medium hover:from-teal-500 hover:to-cyan-600">
+                            選擇此方案
+                        </button>
+                        <button class="px-3 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 詳細行程（展開後顯示） -->
+            <div class="px-4">
+                <div class="bg-white rounded-xl shadow-sm p-4">
+                    <h3 class="text-sm font-semibold text-gray-800 mb-3">方案一詳細行程</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-xs font-bold">1</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-xs text-gray-500 mb-1">14:00 - 15:30</div>
+                                <h4 class="font-semibold text-gray-800 mb-1">大館藝術展覽</h4>
+                                <p class="text-xs text-gray-600">前中區警署建築群，藝術文化空間</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-xs font-bold">2</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-xs text-gray-500 mb-1">16:00 - 18:00</div>
+                                <h4 class="font-semibold text-gray-800 mb-1">南丫島</h4>
+                                <p class="text-xs text-gray-600">離島探索，海邊步道和漁村風情</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 漫遊模式 -->
+        <div id="wander-mode" class="hidden">
+            <!-- 漫遊模式說明 -->
+            <div class="px-4 mb-4">
+                <div class="bg-gradient-to-r from-cyan-400 to-sky-500 rounded-xl shadow-lg p-4 text-white">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-lg font-semibold">漫遊模式</h2>
+                        <button class="text-white hover:text-cyan-100">
+                            <i class="fas fa-sliders-h"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-cyan-50 mb-2">隨心所欲，發現城市隱藏角落</p>
+                    <div class="flex items-center space-x-2 text-sm mb-3">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>當前位置：中環</span>
+                        <span class="mx-2">•</span>
+                        <i class="fas fa-walking"></i>
+                        <span>已探索：1.8公里</span>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-lg px-3 py-2 flex items-center space-x-2">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="text-xs">路線可根據你的心情和需求隨時調整</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 當前路線 -->
+            <div class="px-4 mb-4">
+                <div class="bg-white rounded-xl shadow-sm p-4 border-l-4 border-cyan-400">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-gray-800">當前推薦路線</h3>
+                        <button class="text-xs text-cyan-600 hover:text-cyan-700 font-medium">
+                            <i class="fas fa-sync-alt mr-1"></i>重新規劃
+                        </button>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- 路線點1 -->
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-xs font-bold">1</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="text-xs font-medium text-gray-500">現在</span>
+                                    <span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full">進行中</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-800 mb-1">大館</h4>
+                                <p class="text-xs text-gray-600 mb-2">前中區警署建築群，藝術文化空間</p>
+                                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                    <span><i class="fas fa-walking"></i> 50米</span>
+                                    <span><i class="fas fa-star text-yellow-400"></i> 4.5</span>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-red-500" title="移除">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- 路線點2 -->
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-sky-300 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-xs font-bold">2</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="text-xs font-medium text-gray-500">15分鐘後</span>
+                                    <span class="text-xs bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full">即將到達</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-800 mb-1">上環古董街</h4>
+                                <p class="text-xs text-gray-600 mb-2">文藝青年最愛，充滿懷舊氣息</p>
+                                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                    <span><i class="fas fa-walking"></i> 300米 • 4分鐘</span>
+                                    <span><i class="fas fa-star text-yellow-400"></i> 4.7</span>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-red-500" title="移除">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+
+                        <!-- 路線點3 -->
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-xs font-bold">3</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="text-xs font-medium text-gray-500">30分鐘後</span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">待探索</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-800 mb-1">深水埗文青咖啡店</h4>
+                                <p class="text-xs text-gray-600 mb-2">隱藏在小巷中的特色咖啡店</p>
+                                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                    <span><i class="fas fa-walking"></i> 1.2公里 • 15分鐘</span>
+                                    <span><i class="fas fa-star text-yellow-400"></i> 4.6</span>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-red-500" title="移除">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-gray-100">
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>總距離：約 1.5公里</span>
+                            <span>預計時間：約 1小時</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 實時推薦 -->
+            <div class="px-4 mb-4">
+                <h3 class="text-sm font-semibold text-gray-700 mb-3">為你推薦</h3>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl shadow-sm p-4 border-l-4 border-cyan-400">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <i class="fas fa-lightbulb text-yellow-500"></i>
+                                    <span class="text-xs font-medium text-cyan-600">附近發現</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-800 mb-1">深水埗文青咖啡店</h4>
+                                <p class="text-xs text-gray-600 mb-2">距離你只有200米，評分4.6分</p>
+                                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                    <span><i class="fas fa-walking"></i> 0.2km</span>
+                                    <span><i class="fas fa-star text-yellow-400"></i> 4.6</span>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2 mt-3">
+                            <button class="flex-1 bg-gradient-to-r from-cyan-400 to-sky-500 text-white py-2 rounded-lg text-sm font-medium hover:from-cyan-500 hover:to-sky-600">
+                                <i class="fas fa-check mr-1"></i>加入計劃
+                            </button>
+                            <button class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200">
+                                <i class="fas fa-times mr-1"></i>跳過
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm p-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="text-xs font-medium text-gray-500">現在</span>
+                                    <span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full">進行中</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-800 mb-1">大館</h4>
+                                <p class="text-xs text-gray-500">距離：50米</p>
+                            </div>
+                            <div class="w-12 h-12 bg-cyan-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-cyan-500"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm p-4 border-l-4 border-sky-400">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="text-xs font-medium text-gray-500">15分鐘後</span>
+                                    <span class="text-xs bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full">即將到達</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-800 mb-1">上環古董街</h4>
+                                <p class="text-xs text-gray-500">距離：300米 • 步行4分鐘</p>
+                            </div>
+                            <div class="w-12 h-12 bg-sky-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-store text-sky-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 偏好調整 -->
+            <div class="px-4">
+                <div class="bg-white rounded-xl shadow-sm p-4">
+                    <h3 class="text-sm font-semibold text-gray-800 mb-3">調整偏好</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-3 py-1.5 bg-cyan-50 text-cyan-600 rounded-full text-xs font-medium hover:bg-cyan-100">
+                            <i class="fas fa-utensils mr-1"></i>美食
+                        </button>
+                        <button class="px-3 py-1.5 bg-sky-50 text-sky-600 rounded-full text-xs font-medium hover:bg-sky-100">
+                            <i class="fas fa-camera mr-1"></i>拍照
+                        </button>
+                        <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium hover:bg-gray-200">
+                            <i class="fas fa-palette mr-1"></i>文創
+                        </button>
+                        <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium hover:bg-gray-200">
+                            <i class="fas fa-mountain mr-1"></i>自然
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部操作欄 -->
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-200">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center space-x-3">
+            <button class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-200">
+                <i class="fas fa-redo mr-2"></i>重新生成
+            </button>
+            <a href="plan_detail.html" class="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-lg font-medium text-center hover:from-blue-600 hover:to-indigo-700">
+                查看詳情
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 檢測URL參數，判斷是目的地規劃還是漫遊模式
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode') || 'destination';
+        
+        if (mode === 'wander') {
+            // 顯示漫遊模式
+            document.getElementById('destination-mode').classList.add('hidden');
+            document.getElementById('wander-mode').classList.remove('hidden');
+        } else {
+            // 顯示目的地規劃模式
+            document.getElementById('destination-mode').classList.remove('hidden');
+            document.getElementById('wander-mode').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

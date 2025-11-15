@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>發布內容</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="social.html" class="text-gray-600 hover:text-blue-500">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </a>
+            <span class="text-lg font-semibold text-gray-800">發布內容</span>
+            <button class="text-blue-500 text-sm font-medium">發布</button>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-16 pb-20">
+        <!-- 發布類型選擇 -->
+        <div class="px-4 mb-4">
+            <div class="grid grid-cols-3 gap-3">
+                <button class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl p-4 flex flex-col items-center space-y-2 shadow-lg">
+                    <i class="fas fa-route text-2xl"></i>
+                    <span class="text-sm font-medium">發布路線</span>
+                </button>
+                <button class="bg-white border-2 border-gray-200 text-gray-600 rounded-xl p-4 flex flex-col items-center space-y-2 hover:border-blue-300">
+                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                    <span class="text-sm font-medium">分享地點</span>
+                </button>
+                <button class="bg-white border-2 border-gray-200 text-gray-600 rounded-xl p-4 flex flex-col items-center space-y-2 hover:border-blue-300">
+                    <i class="fas fa-camera text-2xl"></i>
+                    <span class="text-sm font-medium">上傳照片</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 發布內容表單 -->
+        <div class="px-4 space-y-4">
+            <!-- 文字內容 -->
+            <div class="bg-white rounded-2xl shadow-sm p-4">
+                <textarea placeholder="分享你的探索經歷、發現的小眾景點或推薦路線..." 
+                          class="w-full h-32 resize-none border-none focus:outline-none text-sm text-gray-800 placeholder-gray-400"></textarea>
+            </div>
+
+            <!-- 路線選擇 -->
+            <div class="bg-white rounded-2xl shadow-sm p-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-semibold text-gray-800">選擇路線</h3>
+                    <button class="text-xs text-blue-500 hover:text-blue-600">從歷史記錄選擇</button>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-800">中環</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-800">大館</p>
+                        </div>
+                        <button class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-800">上環古董街</p>
+                        </div>
+                        <button class="text-gray-400 hover:text-red-500">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="w-full mt-3 py-2 border-2 border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-blue-300 hover:text-blue-500">
+                    <i class="fas fa-plus mr-1"></i>添加地點
+                </button>
+            </div>
+
+            <!-- 照片上傳 -->
+            <div class="bg-white rounded-2xl shadow-sm p-4">
+                <h3 class="text-sm font-semibold text-gray-800 mb-3">添加照片</h3>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="aspect-square bg-gradient-to-br from-rose-200 to-pink-300 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-plus text-rose-500 text-2xl"></i>
+                    </div>
+                    <div class="aspect-square bg-gradient-to-br from-amber-200 to-orange-300 rounded-xl"></div>
+                    <div class="aspect-square bg-gradient-to-br from-emerald-200 to-teal-300 rounded-xl"></div>
+                </div>
+            </div>
+
+            <!-- 標籤 -->
+            <div class="bg-white rounded-2xl shadow-sm p-4">
+                <h3 class="text-sm font-semibold text-gray-800 mb-3">添加標籤</h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="px-3 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-medium">#小眾景點</span>
+                    <span class="px-3 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-xs font-medium">#文青路線</span>
+                    <span class="px-3 py-1.5 bg-cyan-50 text-cyan-600 rounded-full text-xs font-medium">#拍照勝地</span>
+                </div>
+                <input type="text" placeholder="輸入標籤..." 
+                       class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- 隱私設置 -->
+            <div class="bg-white rounded-2xl shadow-sm p-4">
+                <h3 class="text-sm font-semibold text-gray-800 mb-3">誰可以看到</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-globe text-blue-500"></i>
+                            <span class="text-sm text-gray-800">公開</span>
+                        </div>
+                        <input type="radio" name="privacy" checked class="text-blue-500">
+                    </label>
+                    <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-users text-gray-500"></i>
+                            <span class="text-sm text-gray-800">僅好友</span>
+                        </div>
+                        <input type="radio" name="privacy" class="text-blue-500">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部發布按鈕 -->
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50">
+        <div class="max-w-md mx-auto px-4 py-3">
+            <button class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-indigo-700 shadow-lg">
+                <i class="fas fa-paper-plane mr-2"></i>發布
+            </button>
+        </div>
+    </div>
+</body>
+</html>
+

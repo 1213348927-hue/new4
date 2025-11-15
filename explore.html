@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="text-gray-600 hover:text-blue-500">
+                    <i class="fas fa-arrow-left text-lg"></i>
+                </a>
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="搜索景點、餐廳、活動..." 
+                           class="w-full bg-gray-100 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <button class="text-blue-500 text-sm font-medium">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-20 pb-20">
+        <!-- 推薦標籤 -->
+        <div class="px-4 py-3 bg-white border-b border-gray-100">
+            <div class="flex items-center space-x-2 overflow-x-auto">
+                <button class="px-3 py-1.5 bg-blue-500 text-white rounded-full text-xs font-medium whitespace-nowrap">
+                    為你推薦
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    熱門活動
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    即時活動
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    附近
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    社交活動
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    美食
+                </button>
+            </div>
+        </div>
+
+        <!-- 推薦內容Feed -->
+        <div class="px-2 mt-2">
+            <div class="space-y-3">
+                <!-- 推薦卡片1 - 社交活動 -->
+                <a href="activity_detail.html?id=1" class="block bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <div class="h-64 bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 relative">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-2 py-1 flex items-center space-x-1">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs font-medium text-gray-800">1.2k</span>
+                            </div>
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">即時活動</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">西貢皮划艇日</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center space-x-2 flex-1">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-500 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-800 truncate">水上運動愛好者</p>
+                                    <p class="text-xs text-gray-500">2小時前</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">關注</button>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">西貢皮划艇體驗日！新手友好</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">今天下午的西貢皮划艇活動，有專業教練指導，適合新手！風景超美，還能認識新朋友。</p>
+                        
+                        <!-- 活動信息 -->
+                        <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-gray-700">
+                                        <i class="fas fa-calendar-alt text-blue-500"></i>
+                                        <span>今天 14:00 - 17:00</span>
+                                    </div>
+                                    <span class="bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-medium">餘票：12張</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                    <span>西貢碼頭</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-bus text-blue-500"></i>
+                                    <span>地鐵觀塘線 → 92號巴士</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-2">
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#戶外運動</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#社交活動</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#新手友好</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 pt-2 border-t border-gray-100">
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-red-500">
+                                <i class="far fa-heart"></i>
+                                <span class="text-xs">1.2k</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-500">
+                                <i class="far fa-comment"></i>
+                                <span class="text-xs">89</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-green-500">
+                                <i class="far fa-share-square"></i>
+                                <span class="text-xs">分享</span>
+                            </button>
+                            <button class="ml-auto text-gray-600 hover:text-blue-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 推薦卡片2 - 熱門活動 -->
+                <a href="activity_detail.html?id=2" class="block bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <div class="h-64 bg-gradient-to-r from-purple-500 via-pink-400 to-red-400 relative">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-2 py-1 flex items-center space-x-1">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs font-medium text-gray-800">2.5k</span>
+                            </div>
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">熱門活動</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">海港城街頭藝術節</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center space-x-2 flex-1">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-500 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-800 truncate">藝術探索者</p>
+                                    <p class="text-xs text-gray-500">5小時前</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">關注</button>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">海港城街頭藝術節！本週末限定</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">超多本地藝術家現場創作，還有互動工作坊！適合喜歡藝術和拍照的朋友，本週末最後兩天。</p>
+                        
+                        <!-- 活動信息 -->
+                        <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-gray-700">
+                                        <i class="fas fa-calendar-alt text-blue-500"></i>
+                                        <span>12月14-15日 10:00 - 20:00</span>
+                                    </div>
+                                    <span class="bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-medium">餘票充足</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                    <span>海港城海運大廈</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-subway text-blue-500"></i>
+                                    <span>地鐵尖沙咀站A1出口</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-2">
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#藝術節</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#街頭藝術</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#免費活動</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 pt-2 border-t border-gray-100">
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-red-500">
+                                <i class="far fa-heart"></i>
+                                <span class="text-xs">2.5k</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-500">
+                                <i class="far fa-comment"></i>
+                                <span class="text-xs">156</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-green-500">
+                                <i class="far fa-share-square"></i>
+                                <span class="text-xs">分享</span>
+                            </button>
+                            <button class="ml-auto text-gray-600 hover:text-blue-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 推薦卡片3 - 社交活動 -->
+                <a href="activity_detail.html?id=3" class="block bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <div class="h-64 bg-gradient-to-r from-green-500 via-emerald-400 to-teal-400 relative">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-2 py-1 flex items-center space-x-1">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs font-medium text-gray-800">856</span>
+                            </div>
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-medium">社交活動</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">灣仔室內花藝工坊</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center space-x-2 flex-1">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-500 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-800 truncate">花藝愛好者</p>
+                                    <p class="text-xs text-gray-500">1天前</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">關注</button>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">週末花藝工坊，放鬆心情的好選擇</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">專業花藝師指導，可以帶走自己的作品。環境很舒適，適合和朋友一起來，也可以認識新朋友。</p>
+                        
+                        <!-- 活動信息 -->
+                        <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-gray-700">
+                                        <i class="fas fa-calendar-alt text-blue-500"></i>
+                                        <span>12月16日 15:00 - 17:00</span>
+                                    </div>
+                                    <span class="bg-yellow-100 text-yellow-600 px-2 py-0.5 rounded-full font-medium">餘票：5張</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                    <span>灣仔藝術中心3樓</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-subway text-blue-500"></i>
+                                    <span>地鐵灣仔站A3出口</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-2">
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#手作工坊</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#社交活動</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#室內活動</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 pt-2 border-t border-gray-100">
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-red-500">
+                                <i class="far fa-heart"></i>
+                                <span class="text-xs">856</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-500">
+                                <i class="far fa-comment"></i>
+                                <span class="text-xs">42</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-green-500">
+                                <i class="far fa-share-square"></i>
+                                <span class="text-xs">分享</span>
+                            </button>
+                            <button class="ml-auto text-gray-600 hover:text-blue-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 推薦卡片4 - 即時活動 -->
+                <a href="activity_detail.html?id=4" class="block bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <div class="h-64 bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-400 relative">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-2 py-1 flex items-center space-x-1">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs font-medium text-gray-800">1.8k</span>
+                            </div>
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">即時活動</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">中環夜跑團</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center space-x-2 flex-1">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-500 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-800 truncate">運動達人</p>
+                                    <p class="text-xs text-gray-500">3小時前</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">關注</button>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">今晚中環夜跑團，一起運動交朋友</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">每週三晚上的夜跑活動，路線經過中環海濱，風景很美。適合各種水平的跑者，跑完還可以一起聚餐。</p>
+                        
+                        <!-- 活動信息 -->
+                        <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-gray-700">
+                                        <i class="fas fa-calendar-alt text-blue-500"></i>
+                                        <span>今晚 19:00 - 21:00</span>
+                                    </div>
+                                    <span class="bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-medium">免費參加</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                    <span>中環海濱長廊</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-subway text-blue-500"></i>
+                                    <span>地鐵中環站A出口</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-2">
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#運動</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#社交活動</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#免費</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 pt-2 border-t border-gray-100">
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-red-500">
+                                <i class="far fa-heart"></i>
+                                <span class="text-xs">1.8k</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-500">
+                                <i class="far fa-comment"></i>
+                                <span class="text-xs">124</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-green-500">
+                                <i class="far fa-share-square"></i>
+                                <span class="text-xs">分享</span>
+                            </button>
+                            <button class="ml-auto text-gray-600 hover:text-blue-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 推薦卡片5 - 熱門活動 -->
+                <a href="activity_detail.html?id=5" class="block bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="relative">
+                        <div class="h-64 bg-gradient-to-r from-indigo-500 via-purple-400 to-pink-400 relative">
+                            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-2 py-1 flex items-center space-x-1">
+                                <i class="fas fa-heart text-red-500 text-xs"></i>
+                                <span class="text-xs font-medium text-gray-800">3.2k</span>
+                            </div>
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">熱門活動</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">深水埗文青市集</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center space-x-2 flex-1">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-500 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-semibold text-gray-800 truncate">文青生活</p>
+                                    <p class="text-xs text-gray-500">1天前</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">關注</button>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">深水埗週末文青市集，手作和咖啡</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">本週末的市集有超多本地手作品牌，還有現場音樂和咖啡攤位。適合週末來逛逛，發現獨特的小物。</p>
+                        
+                        <!-- 活動信息 -->
+                        <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-gray-700">
+                                        <i class="fas fa-calendar-alt text-blue-500"></i>
+                                        <span>12月16-17日 11:00 - 19:00</span>
+                                    </div>
+                                    <span class="bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-medium">免費入場</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                    <span>深水埗大南街</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-gray-700">
+                                    <i class="fas fa-subway text-blue-500"></i>
+                                    <span>地鐵深水埗站A2出口</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-2">
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#市集</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#手作</span>
+                                <span class="px-2 py-0.5 bg-white text-blue-600 rounded-full text-xs">#文青</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 pt-2 border-t border-gray-100">
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-red-500">
+                                <i class="far fa-heart"></i>
+                                <span class="text-xs">3.2k</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-blue-500">
+                                <i class="far fa-comment"></i>
+                                <span class="text-xs">234</span>
+                            </button>
+                            <button class="flex items-center space-x-1 text-gray-600 hover:text-green-500">
+                                <i class="far fa-share-square"></i>
+                                <span class="text-xs">分享</span>
+                            </button>
+                            <button class="ml-auto text-gray-600 hover:text-blue-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 加載更多 -->
+        <div class="px-4 py-6 text-center">
+            <button class="text-blue-500 text-sm font-medium">
+                <i class="fas fa-sync-alt mr-1"></i>加載更多
+            </button>
+        </div>
+    </main>
+</body>
+</html>
+

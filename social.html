@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <h1 class="text-lg font-semibold text-gray-800">社交</h1>
+            <button class="text-blue-500 text-sm font-medium">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-16 pb-20">
+        <!-- 發布按鈕 - 更明顯 -->
+        <div class="px-4 mb-4">
+            <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-cyan-50 rounded-2xl shadow-lg p-4 border-2 border-blue-200">
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-user text-white text-lg"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800 mb-0.5">張小明</p>
+                        <p class="text-xs text-gray-500">分享你的探索之旅</p>
+                    </div>
+                </div>
+                <button onclick="window.location.href='social_publish.html'" class="w-full text-left px-4 py-3 bg-white rounded-xl text-sm text-gray-600 hover:bg-gray-50 border border-blue-200 flex items-center justify-between">
+                    <span>分享你的路線或發現的小眾景點...</span>
+                    <i class="fas fa-chevron-right text-blue-500"></i>
+                </button>
+                <div class="flex items-center space-x-4 mt-3 text-xs text-gray-600">
+                    <button class="flex items-center space-x-1 hover:text-blue-600">
+                        <i class="fas fa-route"></i>
+                        <span>發布路線</span>
+                    </button>
+                    <button class="flex items-center space-x-1 hover:text-indigo-600">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>分享地點</span>
+                    </button>
+                    <button class="flex items-center space-x-1 hover:text-cyan-600">
+                        <i class="fas fa-camera"></i>
+                        <span>上傳照片</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 好友動態 -->
+        <div class="px-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-semibold text-gray-700">好友動態</h3>
+                <button class="text-xs text-blue-500">查看全部</button>
+            </div>
+
+            <div class="space-y-4">
+                <!-- 動態1 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm">李</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">李小華</p>
+                                    <p class="text-xs text-gray-500">2小時前</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-800 mb-3">剛發現了一個超隱蔽的小眾景點！📍 坪洲島上的秘密海灘，人少景美，適合拍照📸</p>
+                        <div class="h-48 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg mb-3 relative">
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">坪洲島</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <button class="flex items-center space-x-1 hover:text-red-500">
+                                    <i class="far fa-heart"></i>
+                                    <span>24</span>
+                                </button>
+                                <button class="flex items-center space-x-1 hover:text-blue-500">
+                                    <i class="far fa-comment"></i>
+                                    <span>5</span>
+                                </button>
+                                <button class="hover:text-green-500">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-yellow-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 動態2 - 路線分享 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-sky-400 to-cyan-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm">王</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">王小明</p>
+                                    <p class="text-xs text-gray-500">5小時前</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-800 mb-3">分享一條超棒的漫遊路線！🚶‍♂️ 中環 → 大館 → 上環古董街 → 西環碼頭，全程約2小時，發現了很多隱藏小店！</p>
+                        <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-3 mb-3">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <i class="fas fa-route text-indigo-500"></i>
+                                <span class="text-sm font-semibold text-gray-800">推薦路線</span>
+                            </div>
+                            <div class="space-y-1 text-xs text-gray-600">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-4 h-4 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs">1</span>
+                                    <span>中環</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-4 h-4 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs">2</span>
+                                    <span>大館</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-4 h-4 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs">3</span>
+                                    <span>上環古董街</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-4 h-4 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs">4</span>
+                                    <span>西環碼頭</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <button class="flex items-center space-x-1 hover:text-red-500">
+                                    <i class="far fa-heart"></i>
+                                    <span>18</span>
+                                </button>
+                                <button class="flex items-center space-x-1 hover:text-blue-500">
+                                    <i class="far fa-comment"></i>
+                                    <span>3</span>
+                                </button>
+                                <button class="hover:text-green-500">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                            <button class="text-gray-400 hover:text-yellow-500">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 動態3 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm">張</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">張美麗</p>
+                                    <p class="text-xs text-gray-500">1天前</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-800 mb-3">在深水埗發現了一家超有特色的文青咖啡店！☕ 隱藏在小巷裡，環境超棒，咖啡也很好喝！</p>
+                        <div class="h-48 bg-gradient-to-r from-amber-400 to-orange-500 rounded-lg mb-3 relative">
+                            <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                                <span class="text-xs font-medium text-gray-800">深水埗咖啡店</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <button class="flex items-center space-x-1 hover:text-red-500">
+                                    <i class="fas fa-heart text-red-500"></i>
+                                    <span>32</span>
+                                </button>
+                                <button class="flex items-center space-x-1 hover:text-blue-500">
+                                    <i class="far fa-comment"></i>
+                                    <span>8</span>
+                                </button>
+                                <button class="hover:text-green-500">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                            <button class="text-yellow-500">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部導航 -->
+    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50">
+        <div class="max-w-md mx-auto flex items-center justify-around py-2">
+            <a href="index.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span class="text-xs">首頁</span>
+            </a>
+            <a href="live_interaction.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-compass text-xl mb-1"></i>
+                <span class="text-xs">推薦</span>
+            </a>
+            <a href="social.html" class="flex flex-col items-center py-2 px-4 text-blue-500">
+                <i class="fas fa-users text-xl mb-1"></i>
+                <span class="text-xs">社交</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span class="text-xs">我的</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歷史記錄</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="text-gray-600 hover:text-blue-500">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </a>
+            <span class="text-lg font-semibold text-gray-800">歷史記錄</span>
+            <button class="text-blue-500 text-sm font-medium">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-16 pb-20">
+        <!-- 篩選標籤 -->
+        <div class="px-4 py-4 bg-white border-b border-gray-100">
+            <div class="flex items-center space-x-2 overflow-x-auto">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-medium whitespace-nowrap">
+                    全部
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    今天
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    本週
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    本月
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    目的地規劃
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    漫遊模式
+                </button>
+            </div>
+        </div>
+
+        <!-- 歷史記錄列表 -->
+        <div class="px-4 mt-4">
+            <div class="space-y-4">
+                <!-- 記錄1 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-32 bg-gradient-to-r from-blue-500 to-blue-600 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">今天 14:30 - 18:30</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-800 mb-1">目的地規劃：南丫島</h3>
+                                <p class="text-sm text-gray-600 mb-2">大館 → 怪獸大廈 → 南丫島</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 中環</span>
+                                <span><i class="fas fa-walking"></i> 2.3km</span>
+                                <span><i class="fas fa-clock"></i> 4小時</span>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">查看詳情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 記錄2 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-32 bg-gradient-to-r from-blue-500 to-blue-600 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">昨天 10:00 - 16:00</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-800 mb-1">漫遊探索計劃</h3>
+                                <p class="text-sm text-gray-600 mb-2">長洲 → 梅窩 → 大嶼山</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 銅鑼灣</span>
+                                <span><i class="fas fa-walking"></i> 3.5km</span>
+                                <span><i class="fas fa-clock"></i> 6小時</span>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">查看詳情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 記錄3 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-32 bg-gradient-to-r from-blue-500 to-blue-600 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="fas fa-times-circle text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">3天前 15:00 - 19:00</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-800 mb-1">目的地規劃：大澳漁村</h3>
+                                <p class="text-sm text-gray-600 mb-2">西貢 → 大澳 → 昂坪</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 尖沙咀</span>
+                                <span><i class="fas fa-walking"></i> 4.2km</span>
+                                <span><i class="fas fa-clock"></i> 4小時</span>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">查看詳情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 記錄4 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-32 bg-gradient-to-r from-blue-500 to-blue-600 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">上週 12:00 - 18:00</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-800 mb-1">週末漫遊計劃</h3>
+                                <p class="text-sm text-gray-600 mb-2">彩虹邨 → 坪洲 → 西環碼頭</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 上環</span>
+                                <span><i class="fas fa-walking"></i> 2.8km</span>
+                                <span><i class="fas fa-clock"></i> 6小時</span>
+                            </div>
+                            <button class="text-blue-500 text-sm font-medium">查看詳情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 空狀態提示 -->
+        <div class="px-4 mt-8 text-center">
+            <p class="text-sm text-gray-500">沒有更多記錄了</p>
+        </div>
+    </main>
+
+    <!-- 底部導航 -->
+    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200">
+        <div class="max-w-md mx-auto flex items-center justify-around py-2">
+            <a href="index.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span class="text-xs">首頁</span>
+            </a>
+            <a href="live_interaction.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-compass text-xl mb-1"></i>
+                <span class="text-xs">推薦</span>
+            </a>
+            <a href="history.html" class="flex flex-col items-center py-2 px-4 text-blue-500">
+                <i class="fas fa-history text-xl mb-1"></i>
+                <span class="text-xs">記錄</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span class="text-xs">我的</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
+

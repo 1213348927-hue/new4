@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推薦與搜索</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-md mx-auto px-4 py-3">
+            <div class="flex items-center space-x-3">
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="搜索地點、活動、餐廳..." 
+                           class="w-full bg-gray-100 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <button class="text-blue-500 text-sm font-medium">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pt-20 pb-20">
+        <!-- 分類標籤 -->
+        <div class="px-4 mb-4">
+            <div class="flex items-center space-x-2 overflow-x-auto">
+                <button class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-600 text-white rounded-full text-sm font-medium whitespace-nowrap">
+                    全部
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    <i class="fas fa-map-marker-alt mr-1"></i>地點
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    <i class="fas fa-utensils mr-1"></i>餐廳
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    <i class="fas fa-music mr-1"></i>活動
+                </button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium whitespace-nowrap hover:bg-gray-200">
+                    <i class="fab fa-twitter mr-1"></i>社交
+                </button>
+            </div>
+        </div>
+
+        <!-- 推薦標籤 -->
+        <div class="px-4 mb-4">
+            <div class="flex items-center space-x-2 overflow-x-auto">
+                <button class="px-3 py-1.5 bg-blue-500 text-white rounded-full text-xs font-medium whitespace-nowrap">
+                    為你推薦
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    熱門活動
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    即時活動
+                </button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap hover:bg-gray-200">
+                    附近
+                </button>
+            </div>
+        </div>
+
+        <!-- 熱門搜索 -->
+        <div class="px-4 mb-6">
+            <h3 class="text-sm font-semibold text-gray-700 mb-3">熱門搜索</h3>
+            <div class="flex flex-wrap gap-2">
+                <button class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-700 shadow-sm hover:shadow-md">
+                    #彩虹邨
+                </button>
+                <button class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-700 shadow-sm hover:shadow-md">
+                    #大館
+                </button>
+                <button class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-700 shadow-sm hover:shadow-md">
+                    #怪獸大廈
+                </button>
+                <button class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-700 shadow-sm hover:shadow-md">
+                    #赤柱
+                </button>
+                <button class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-700 shadow-sm hover:shadow-md">
+                    #長洲
+                </button>
+                <button class="px-3 py-1.5 bg-white rounded-lg text-sm text-gray-700 shadow-sm hover:shadow-md">
+                    #西貢
+                </button>
+            </div>
+        </div>
+
+        <!-- 推薦內容 -->
+        <div class="px-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-semibold text-gray-700">為你推薦</h3>
+                <span class="text-xs text-gray-500">12 個結果</span>
+            </div>
+
+            <div class="space-y-4">
+                <!-- 活動卡片1 -->
+                <a href="activity_detail.html" class="block bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 bg-gradient-to-r from-indigo-500 to-blue-600 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">活動</span>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            報名截止：今天 12:00
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-1">西貢皮划艇體驗日</h4>
+                        <p class="text-sm text-gray-600 mb-2">新手友好的皮划艇活動，專業教練指導</p>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full text-xs">#水上運動</span>
+                            <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-full text-xs">#社交活動</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-star text-yellow-400"></i> 4.8</span>
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 西貢</span>
+                                <span><i class="fas fa-dollar-sign text-green-600"></i> $280</span>
+                            </div>
+                            <span class="text-indigo-600 text-sm font-medium">查看詳情 →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 地點卡片 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-sky-400 to-cyan-500 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">地點</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-1">彩虹邨</h4>
+                        <p class="text-sm text-gray-600 mb-2">彩色建築群，網紅拍照勝地，獨特的視覺效果</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-star text-yellow-400"></i> 4.8</span>
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 中環</span>
+                                <span><i class="fas fa-walking"></i> 0.5km</span>
+                            </div>
+                            <button class="text-sky-600 text-sm font-medium">查看</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 餐廳卡片 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-teal-400 to-cyan-500 relative">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-2">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg px-2 py-1">
+                            <span class="text-xs font-medium text-gray-800">餐廳</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-1">西貢海鮮餐廳</h4>
+                        <p class="text-sm text-gray-600 mb-2">海邊小鎮的隱藏餐廳，新鮮海鮮和地道美食</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span><i class="fas fa-star text-yellow-400"></i> 4.6</span>
+                                <span><i class="fas fa-map-marker-alt text-red-500"></i> 西貢</span>
+                                <span><i class="fas fa-dollar-sign"></i> $80-150</span>
+                            </div>
+                            <button class="text-teal-600 text-sm font-medium">查看</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部導航 -->
+    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50">
+        <div class="max-w-md mx-auto flex items-center justify-around py-2">
+            <a href="index.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span class="text-xs">首頁</span>
+            </a>
+            <a href="live_interaction.html" class="flex flex-col items-center py-2 px-4 text-blue-500">
+                <i class="fas fa-compass text-xl mb-1"></i>
+                <span class="text-xs">推薦</span>
+            </a>
+            <a href="social.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-users text-xl mb-1"></i>
+                <span class="text-xs">社交</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span class="text-xs">我的</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

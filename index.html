@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wanderful - 首頁</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "SimHei", "Microsoft YaHei", "黑体", sans-serif;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .slide-panel {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out;
+        }
+        .slide-panel.open {
+            transform: translateX(0);
+        }
+        .map-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主內容區 -->
+    <main class="max-w-md mx-auto pb-20">
+        <!-- 地圖視圖 - 全屏顯示 -->
+        <div class="h-screen relative bg-gray-200">
+            <!-- Google Maps 嵌入 -->
+            <iframe 
+                src="https://maps.google.com/maps?q=22.2819,114.1556&z=14&output=embed&iwloc=0"
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="absolute inset-0"
+                id="mapFrame">
+            </iframe>
+            
+            <!-- 左滑模式選擇面板 -->
+            <div class="slide-panel fixed top-0 left-0 w-80 h-full bg-white shadow-2xl z-50 overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-gray-800">選擇模式</h2>
+                        <button onclick="closeModePanel()" class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- 目的地規劃 -->
+                    <a href="plan_generation.html?mode=destination" class="block mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-lg">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-1">目的地規劃</h3>
+                            <p class="text-sm text-blue-100">設定2-3個固定點或時間，獲得多種方案</p>
+                        </div>
+                    </a>
+
+                    <!-- 漫遊模式 -->
+                    <a href="plan_generation.html?mode=wander" class="block">
+                        <div class="bg-gradient-to-r from-cyan-400 to-sky-500 rounded-2xl p-6 text-white shadow-lg">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-walking text-2xl"></i>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-1">漫遊模式</h3>
+                            <p class="text-sm text-cyan-50">隨心所欲，發現城市隱藏角落</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="slide-panel-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="closeModePanel()"></div>
+            
+            <!-- 左上角：模式選擇按鈕 -->
+            <button onclick="openModePanel()" class="absolute top-4 left-4 z-30 bg-white rounded-xl px-4 py-2 shadow-xl flex items-center space-x-2 hover:bg-gray-50">
+                <i class="fas fa-bars text-gray-700"></i>
+                <span class="text-sm font-medium text-gray-700">選擇模式</span>
+            </button>
+
+            <!-- 右上角：清屏模式按鈕 -->
+            <button onclick="toggleClearMode()" class="absolute top-4 right-4 z-30 bg-white rounded-xl px-3 py-2 shadow-xl hover:bg-gray-50" id="clearModeBtn">
+                <i class="fas fa-eye-slash text-gray-700"></i>
+            </button>
+
+            <!-- 當前位置標記 -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                <div class="relative">
+                    <div class="w-8 h-8 bg-cyan-500 rounded-full border-4 border-white shadow-xl pulse-animation flex items-center justify-center">
+                        <div class="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                    <div class="absolute inset-0 w-8 h-8 bg-cyan-500 rounded-full opacity-30 pulse-animation" style="animation-delay: 0.5s; transform: scale(1.5);"></div>
+                </div>
+            </div>
+
+            <!-- 特色地點標記 - 不同icon -->
+            <div class="absolute top-1/4 left-1/4 z-20">
+                <div class="relative group">
+                    <div class="w-10 h-10 bg-indigo-500 rounded-full border-3 border-white shadow-xl cursor-pointer hover:scale-110 transition flex items-center justify-center">
+                        <i class="fas fa-film text-white text-sm"></i>
+                    </div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-white rounded-lg px-2 py-1 shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-xs font-medium text-gray-800">重慶大廈</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute top-1/3 right-1/4 z-20">
+                <div class="relative group">
+                    <div class="w-10 h-10 bg-sky-500 rounded-full border-3 border-white shadow-xl cursor-pointer hover:scale-110 transition flex items-center justify-center">
+                        <i class="fas fa-star text-white text-sm"></i>
+                    </div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-white rounded-lg px-2 py-1 shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-xs font-medium text-gray-800">蘭桂坊</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-1/4 left-1/3 z-20">
+                <div class="relative group">
+                    <div class="w-10 h-10 bg-teal-500 rounded-full border-3 border-white shadow-xl cursor-pointer hover:scale-110 transition flex items-center justify-center">
+                        <i class="fas fa-book text-white text-sm"></i>
+                    </div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-white rounded-lg px-2 py-1 shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-xs font-medium text-gray-800">大館</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute top-2/3 right-1/3 z-20">
+                <div class="relative group">
+                    <div class="w-10 h-10 bg-blue-400 rounded-full border-3 border-white shadow-xl cursor-pointer hover:scale-110 transition flex items-center justify-center">
+                        <i class="fas fa-camera text-white text-sm"></i>
+                    </div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-white rounded-lg px-2 py-1 shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-xs font-medium text-gray-800">彩虹邨</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 步數信息卡片 - 浮在地圖上（左上角） -->
+            <div class="absolute top-16 left-4 z-30 map-card rounded-xl px-4 py-3 shadow-xl w-48" id="stepsInfo">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-walking text-blue-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs text-gray-500">今日步數</p>
+                        <p class="text-lg font-bold text-gray-800">8,234 <span class="text-xs text-gray-500 font-normal">步</span></p>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-gray-100">
+                    <p class="text-xs text-gray-500">已探索</p>
+                    <p class="text-sm font-bold text-indigo-600">3.2 <span class="text-xs text-gray-500 font-normal">公里</span></p>
+                </div>
+            </div>
+
+            <!-- 地圖上的小卡片1 - 地點介紹（左中上） -->
+            <div class="absolute top-28 left-4 z-30 map-card rounded-xl p-3 shadow-xl w-48" id="locationCard1">
+                <div class="flex items-start justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-film text-indigo-500"></i>
+                        <span class="text-xs font-bold text-gray-800">重慶大廈</span>
+                    </div>
+                    <button onclick="closeCard('locationCard1')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed mb-2">王家衛《重慶森林》拍攝地，充滿異域風情</p>
+                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                    <span><i class="fas fa-star text-yellow-400"></i> 4.5</span>
+                    <span><i class="fas fa-walking"></i> 300m</span>
+                </div>
+            </div>
+
+            <!-- 地圖上的小卡片2 - 活動介紹（左中下） -->
+            <div class="absolute top-44 left-4 z-30 map-card rounded-xl p-3 shadow-xl w-48" id="locationCard2">
+                <div class="flex items-start justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-star text-sky-500"></i>
+                        <span class="text-xs font-bold text-gray-800">蘭桂坊</span>
+                    </div>
+                    <button onclick="closeCard('locationCard2')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed mb-2">張國榮曾在此漫步，充滿港式情懷</p>
+                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                    <span><i class="fas fa-star text-yellow-400"></i> 4.7</span>
+                    <span><i class="fas fa-walking"></i> 500m</span>
+                </div>
+            </div>
+
+            <!-- 地圖上的活動卡片1 - 浮在地圖上（右上角） -->
+            <div class="absolute top-16 right-4 z-30 map-card rounded-xl p-3 shadow-xl w-52" id="activityCard1">
+                <div class="flex items-start justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full font-medium">即時活動</span>
+                    </div>
+                    <button onclick="closeCard('activityCard1')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-1 text-sm">西貢皮划艇日</h3>
+                <div class="flex flex-wrap gap-1 mb-2">
+                    <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full text-xs">#水上運動</span>
+                    <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-full text-xs">#社交</span>
+                </div>
+                <p class="text-xs text-gray-600 mb-2">專業教練指導，適合新手</p>
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+                    <span><i class="fas fa-map-marker-alt text-blue-500"></i> 西貢</span>
+                    <span><i class="fas fa-clock text-indigo-500"></i> 今天 14:00</span>
+                </div>
+                <button class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-1.5 rounded-lg text-xs font-medium hover:from-blue-600 hover:to-indigo-700">
+                    查看詳情
+                </button>
+            </div>
+
+            <!-- 地圖上的活動卡片2 - 浮在地圖上（右中上） -->
+            <div class="absolute top-32 right-4 z-30 map-card rounded-xl p-3 shadow-xl w-52" id="activityCard2">
+                <div class="flex items-start justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-indigo-500 text-white text-xs px-2 py-0.5 rounded-full font-medium">熱門</span>
+                    </div>
+                    <button onclick="closeCard('activityCard2')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-1 text-sm">海港城街頭藝術節</h3>
+                <div class="flex flex-wrap gap-1 mb-2">
+                    <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-full text-xs">#藝術節</span>
+                    <span class="px-2 py-0.5 bg-sky-50 text-sky-600 rounded-full text-xs">#免費</span>
+                </div>
+                <p class="text-xs text-gray-600 mb-2">本地藝術家現場創作</p>
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+                    <span><i class="fas fa-map-marker-alt text-indigo-500"></i> 海港城</span>
+                    <span><i class="fas fa-clock text-sky-500"></i> 今天 15:00</span>
+                </div>
+                <button class="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-1.5 rounded-lg text-xs font-medium hover:from-indigo-600 hover:to-blue-700">
+                    查看詳情
+                </button>
+            </div>
+
+            <!-- 地圖上的活動卡片3 - 浮在地圖上（右中下） -->
+            <div class="absolute top-48 right-4 z-30 map-card rounded-xl p-3 shadow-xl w-52" id="activityCard3">
+                <div class="flex items-start justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-sky-500 text-white text-xs px-2 py-0.5 rounded-full font-medium">推薦</span>
+                    </div>
+                    <button onclick="closeCard('activityCard3')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-1 text-sm">灣仔室內花藝工坊</h3>
+                <div class="flex flex-wrap gap-1 mb-2">
+                    <span class="px-2 py-0.5 bg-sky-50 text-sky-600 rounded-full text-xs">#手工</span>
+                    <span class="px-2 py-0.5 bg-cyan-50 text-cyan-600 rounded-full text-xs">#文創</span>
+                </div>
+                <p class="text-xs text-gray-600 mb-2">學習花藝技巧</p>
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+                    <span><i class="fas fa-map-marker-alt text-sky-500"></i> 灣仔</span>
+                    <span><i class="fas fa-clock text-cyan-500"></i> 明天 10:00</span>
+                </div>
+                <button class="w-full bg-gradient-to-r from-sky-500 to-cyan-500 text-white py-1.5 rounded-lg text-xs font-medium hover:from-sky-600 hover:to-cyan-600">
+                    查看詳情
+                </button>
+            </div>
+
+
+            <!-- 開始導航按鈕 - 浮在地圖上（顯示已走米數） -->
+            <div class="absolute bottom-40 left-4 right-4 z-30" id="exploreBtn">
+                <div class="bg-white rounded-xl shadow-xl p-3 border border-blue-200">
+                    <div class="flex items-center justify-between mb-2" id="navStatus">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-route text-blue-500"></i>
+                            <span class="text-sm font-semibold text-gray-800" id="navStatusText">開始漫遊</span>
+                        </div>
+                        <button onclick="stopNavigation()" class="text-gray-400 hover:text-gray-600 hidden" id="stopNavBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-gray-500">已行走</p>
+                            <p class="text-lg font-bold text-blue-600" id="distanceWalked">0 <span class="text-xs text-gray-500 font-normal">米</span></p>
+                        </div>
+                        <button onclick="startNavigation()" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-blue-600 hover:to-indigo-700" id="startNavBtn">
+                            <i class="fas fa-play mr-1"></i>開始導航
+                        </button>
+                        <button onclick="stopNavigation()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-gray-600 hover:to-gray-700 hidden" id="stopNavBtnMain">
+                            <i class="fas fa-stop mr-1"></i>停止導航
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 人流情況顯示（底部左側） -->
+            <div class="absolute bottom-32 left-4 z-30 map-card rounded-xl px-3 py-2 shadow-xl" id="crowdInfo">
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full pulse-animation"></div>
+                    <span class="text-xs font-medium text-gray-700">附近人流：正常</span>
+                </div>
+            </div>
+
+            <!-- 實時Twitter內容（底部右側） -->
+            <div class="absolute bottom-32 right-4 z-30 map-card rounded-xl px-3 py-2 shadow-xl max-w-[180px]" id="twitterContent">
+                <div class="flex items-start space-x-2">
+                    <i class="fab fa-twitter text-blue-400 mt-0.5"></i>
+                    <div>
+                        <p class="text-xs text-gray-700 leading-tight">"剛在重慶大廈發現了一家超棒的印度餐廳！"</p>
+                        <p class="text-xs text-gray-400 mt-1">2分鐘前</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部：位置和天氣信息 -->
+            <div class="absolute bottom-4 left-4 z-30 map-card rounded-xl px-4 py-3 shadow-xl">
+                <div class="flex items-center space-x-2 mb-1">
+                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                    <span class="text-sm font-bold text-gray-800">中環</span>
+                </div>
+                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                    <i class="fas fa-sun text-yellow-500"></i>
+                    <span>28°C 晴朗</span>
+                </div>
+            </div>
+
+            <!-- 地圖控制按鈕 -->
+            <div class="absolute bottom-4 right-4 flex flex-col space-y-2 z-30">
+                <button class="w-10 h-10 bg-white rounded-lg shadow-lg flex items-center justify-center hover:bg-gray-50">
+                    <i class="fas fa-plus text-gray-700"></i>
+                </button>
+                <button class="w-10 h-10 bg-white rounded-lg shadow-lg flex items-center justify-center hover:bg-gray-50">
+                    <i class="fas fa-minus text-gray-700"></i>
+                </button>
+                <button class="w-10 h-10 bg-cyan-500 rounded-lg shadow-lg flex items-center justify-center hover:bg-cyan-600">
+                    <i class="fas fa-crosshairs text-white"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部導航 -->
+    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 z-50">
+        <div class="max-w-md mx-auto flex items-center justify-around py-2">
+            <a href="index.html" class="flex flex-col items-center py-2 px-4 text-blue-500">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span class="text-xs">首頁</span>
+            </a>
+            <a href="live_interaction.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-compass text-xl mb-1"></i>
+                <span class="text-xs">推薦</span>
+            </a>
+            <a href="social.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-users text-xl mb-1"></i>
+                <span class="text-xs">社交</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center py-2 px-4 text-gray-400 hover:text-blue-500">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span class="text-xs">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        function openModePanel() {
+            document.querySelector('.slide-panel').classList.add('open');
+            document.querySelector('.slide-panel-overlay').classList.remove('hidden');
+        }
+        
+        function closeModePanel() {
+            document.querySelector('.slide-panel').classList.remove('open');
+            document.querySelector('.slide-panel-overlay').classList.add('hidden');
+        }
+
+        let clearMode = false;
+        let navigationActive = false;
+        let distanceWalked = 0;
+        let navigationInterval = null;
+
+        function toggleClearMode() {
+            clearMode = !clearMode;
+            const btn = document.getElementById('clearModeBtn');
+            // 不隐藏导航按钮（exploreBtn）
+            const cards = ['locationCard1', 'locationCard2', 'crowdInfo', 'twitterContent', 'activityCard1', 'activityCard2', 'activityCard3', 'stepsInfo'];
+            
+            if (clearMode) {
+                btn.innerHTML = '<i class="fas fa-eye text-gray-700"></i>';
+                cards.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.style.display = 'none';
+                });
+            } else {
+                btn.innerHTML = '<i class="fas fa-eye-slash text-gray-700"></i>';
+                cards.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.style.display = 'block';
+                });
+            }
+        }
+
+        function startNavigation() {
+            if (navigationActive) return;
+            navigationActive = true;
+            distanceWalked = 0;
+            document.getElementById('distanceWalked').textContent = '0 米';
+            
+            // 更新UI状态
+            document.getElementById('navStatusText').textContent = '導航中';
+            document.getElementById('stopNavBtn').classList.remove('hidden');
+            document.getElementById('startNavBtn').classList.add('hidden');
+            document.getElementById('stopNavBtnMain').classList.remove('hidden');
+            
+            // 模拟行走距离增加
+            navigationInterval = setInterval(() => {
+                distanceWalked += Math.random() * 5 + 2; // 每次增加2-7米
+                const distanceText = distanceWalked < 1000 
+                    ? Math.round(distanceWalked) + ' 米'
+                    : (distanceWalked / 1000).toFixed(2) + ' 公里';
+                document.getElementById('distanceWalked').textContent = distanceText;
+            }, 1000); // 每秒更新一次
+        }
+
+        function stopNavigation() {
+            if (!navigationActive) return;
+            navigationActive = false;
+            if (navigationInterval) {
+                clearInterval(navigationInterval);
+                navigationInterval = null;
+            }
+            
+            // 更新UI状态
+            document.getElementById('navStatusText').textContent = '開始漫遊';
+            document.getElementById('stopNavBtn').classList.add('hidden');
+            document.getElementById('startNavBtn').classList.remove('hidden');
+            document.getElementById('stopNavBtnMain').classList.add('hidden');
+        }
+
+        function closeCard(cardId) {
+            document.getElementById(cardId).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
